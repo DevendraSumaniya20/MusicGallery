@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import {
   SafeAreaView,
@@ -186,7 +185,7 @@ const MusicGallery = () => {
             value={progress.position}
             maximumValue={progress.duration}
             minimumValue={0}
-            thumbTintColor="##ea3548"
+            thumbTintColor="#ea3548"
             maximumTrackTintColor="#2e2e2e"
             minimumTrackTintColor="#ea3548"
             onSlidingComplete={async value => {
@@ -207,30 +206,28 @@ const MusicGallery = () => {
         <View style={styles.control}>
           <TouchableOpacity>
             <Ionicons
-              name="play-skip-back-sharp"
+              name="play-skip-back"
               size={35}
               color={'#ea3548'}
-              style={{marginTop: 25}}
+              style={{marginTop: 30}}
               onPress={skipToPrevious}
             />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => togglePlayback(playbakeState)}>
-            <Ionicons
-              name={
-                playbakeState === State.Playing
-                  ? 'ios-pause-circle'
-                  : 'ios-play-circle'
-              }
-              size={75}
-              color={'#ea3548'}
-            />
+            <View style={styles.playPause}>
+              <Ionicons
+                name={playbakeState === State.Playing ? 'pause' : 'ios-play'}
+                size={30}
+                color={'#FFFFFF'}
+              />
+            </View>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => {}}>
             <Ionicons
-              name="play-skip-forward-sharp"
+              name="play-skip-forward"
               size={35}
               color={'#ea3548'}
-              style={{marginTop: 25}}
+              style={{marginTop: 30}}
               onPress={skipToNext}
             />
           </TouchableOpacity>
@@ -238,6 +235,10 @@ const MusicGallery = () => {
       </View>
       <View style={styles.footer}>
         <View style={styles.footerControl}>
+          <TouchableOpacity onPress={() => {}}>
+            <Ionicons name="list" size={30} color={'#ffffff'} />
+          </TouchableOpacity>
+
           <TouchableOpacity onPress={() => {}}>
             <Ionicons name="heart-outline" size={30} color={'#ffffff'} />
           </TouchableOpacity>
@@ -248,10 +249,6 @@ const MusicGallery = () => {
               size={30}
               color={repeatMode !== 'off' ? '#ffffff' : '#ffffff'}
             />
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => {}}>
-            <Ionicons name="ios-share-outline" size={30} color={'#ffffff'} />
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => {}}>
@@ -301,13 +298,13 @@ const styles = StyleSheet.create({
     // shadowRadius: 7,
   },
   artImg: {
-    width: '89%',
-    height: '89%',
+    width: '99%',
+    height: '99%',
     borderRadius: 19,
   },
   title: {
     fontSize: 26,
-    fontWeight: '900',
+    fontWeight: '700',
     textAlign: 'center',
     color: '#fefefe',
   },
@@ -339,5 +336,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '60%',
     marginTop: 15,
+    alignItems: 'center',
+  },
+  playPause: {
+    backgroundColor: '#ea3548',
+    borderRadius: 50,
+    paddingTop: 22,
+    paddingBottom: 22,
+    paddingLeft: 24,
+    paddingRight: 22,
+    marginTop: 33,
   },
 });
